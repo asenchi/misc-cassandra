@@ -24,7 +24,7 @@
 
     <!-- The name of this cluster. This is mainly used to prevent machines in 
          one logical cluster from joining any other cluster. -->
-    <ClusterName>Asenchi Test Cluster</ClusterName>
+    <ClusterName>Test Cluster</ClusterName>
 
     <!-- Keyspaces and ColumnFamilies                                            
          A ColumnFamily is the Cassandra concept closest to a relational table.
@@ -88,19 +88,16 @@
             <KeysCachedFraction>0.01</KeysCachedFraction>
 
             <ColumnFamily CompareWith="UTF8Type" Name="Users" />
-            <ColumnFamily CompareWith="UTF8Type" CompareSubcolumnsWith="TimeUUIDType" ColumnType="Super" Name="Network" />
-            <ColumnFamily CompareWith="UTF8Type" CompareSubcolumnsWith="TimeUUIDType" ColumnType="Super" Name="UsersBookmarks" />
-            <!-- https://api.del.icio.us/v1/tags/get -->
-            <ColumnFamily CompareWith="UTF8Type" CompareSubcolumnsWith="TimeUUIDType" ColumnType="Super" Name="UsersTags" />
             <ColumnFamily CompareWith="UTF8Type" Name="Bookmarks" />
-            <!-- Mimic's Evan's example for StatusRelationships. This would
+            <ColumnFamily CompareWith="UTF8Type" Name="Tags" />
+            <ColumnFamily CompareWith="UTF8Type" CompareSubcolumnsWith="TimeUUIDType" ColumnType="Super" Name="UserRelationships" />
+
+            <!-- Mimic's Evan Weaver's example for StatusRelationships. This would
                  keep track of everyone who has that particular bookmark.
                  API:
                  https://api.del.icio.us/v1/posts/suggest&url={URL}
             -->
             <ColumnFamily CompareWith="UTF8Type" CompareSubcolumnsWith="TimeUUIDType" ColumnType="Super" Name="BookmarkRelationships" />
-            <ColumnFamily CompareWith="UTF8Type" Name="Tags" />
-            <ColumnFamily CompareWith="UTF8Type" CompareSubcolumnsWith="TimeUUIDType" ColumnType="Super" Name="Tagmap" />
         </Keyspace>
     </Keyspaces>
 
