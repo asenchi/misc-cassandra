@@ -1,0 +1,91 @@
+<html>
+<head>
+  <title>Delicious clone in Cassandra</title>
+  <style type="text/css">
+    body { font-family: monospace; font-size: large; }
+    .cluster            { float: left; border: 2px solid #000; }
+    .keyspace           { float: left; border: 2px solid #0000FF; }
+    .columnfamily       { float: left; border: 2px solid #33CC33; }
+    .supercolumnfamily  { float: left; border: 2px solid #006600; }
+    .row                { border: 2px solid #FF0000; }
+    .ksname     { background-color: #0000FF; color: white; }
+    .cfname     { background-color: #33CC33; color: white; }
+    .key        { background-color: #FF0000; color: white; }
+    .scfname    { background-color: #006600; color: white; }
+    .column     { text-align: right; }
+    .value      { text-align: left; }
+  </style>
+</head>
+
+<body>
+  <fieldset class="cluster">
+    <legend>Cluster</legend>
+    <fieldset class="keyspace">
+      <legend>Keyspace<span class="ksname">&lt;Delicious&gt;</span></legend>
+
+      <fieldset class="columnfamily">
+        <legend>ColumnFamily<span class="cfname">&lt;User&gt;</span></legend>
+
+        <fieldset class="row">
+          <legend>Row</legend>
+          <fieldset>
+            <legend>Key<span class="key">&lt;mccv&gt;</span></legend>
+            <table>
+              <tr>
+                <td class="column">Name:</td><td class="value">Mark McBride</td>
+              </tr>
+              <tr>
+                <td class="column">Username:</td><td class="value">mccv</td>
+              </tr>
+              <tr>
+                <td class="column">Email Address:</td><td class="value">email@address.com</td>
+              </tr>
+            </table>
+          </fieldset>
+          <fieldset>
+            <legend>Key<span class="key">&lt;asenchi&gt;</span></legend>
+            <table>
+              <tr>
+                <td class="column">Name:</td><td class="value">Curt Micol</td>
+              </tr>
+              <tr>
+                <td class="column">Username:</td><td class="value">asenchi</td>
+              </tr>
+              <tr>
+                <td class="column">Email Address:</td><td class="value">email2@address.com</td>
+              </tr>
+            </table>
+          </fieldset>
+        </fieldset>
+
+      </fieldset>
+
+      <fieldset class="columnfamily">
+        <legend>ColumnFamily<span class="cfname">&lt;Tag&gt;<span></legend>
+
+        <fieldset class="row">
+          <legend>Row</legend>
+          <fieldset>
+            <legend>Key<span class="key">&lt;blog&gt;</span></legend>
+            <table>
+              <tr>
+                <td class="column">Name:</td><td class="value">Blog</td>
+              </tr>
+            </table>
+          </fieldset>
+        </fieldset>
+      </fieldset>
+
+      <fieldset class="columnfamily">
+        <legend>ColumnFamily<span class="cfname">&lt;Bookmark&gt;</span></legend>
+      </fieldset>
+
+      <fieldset class="supercolumnfamily">
+        <legend>SuperColumnFamily<span class="scfname">&lt;Map&gt;</span></legend>
+
+      </fieldset>
+
+    </fieldset>
+  </fieldset>
+</body>
+</html>
