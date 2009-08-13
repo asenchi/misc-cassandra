@@ -2,7 +2,7 @@
 <head>
   <title>Delicious clone in Cassandra</title>
   <style type="text/css">
-    body { font-family: monospace; font-size: large; }
+    .cluster            { font-family: monospace; font-size: large; }
     .cluster            { float: left; border: 2px solid #000; }
     .keyspace           { float: left; border: 2px solid #0000FF; }
     .columnfamily       { float: left; border: 2px solid #33CC33; }
@@ -18,18 +18,34 @@
 </head>
 
 <body>
+  <h2>Example code</h2>
+  <pre>
+  <b># Insert new user</b>
+  delicious.insert(:User, "1272338", {'Name' => 'Mark McBride', 'Username' => 'mccv', 'Email Address' => 'email@address.com'})
+
+  <b># Insert new tag</b>
+  delicious.insert(:Tag, "blog", {"Name" => "Blog"})
+
+  <b># Add a couple of bookmarks to user '1722283'</b>
+  delicious.insert(:UserBookmarks, "1722283", {"blog" => {"d273459c664720ee01f2269b65120406" => nil}})
+  delicious.insert(:UserBookmarks, "1722283", {"blog" => {"4a333ccbe5e5c08e08ec1e835a55141a" => nil}})
+
+  <b># Connect the 'blog' tag with user '1722283'</b>
+  delicious.insert(:UserTags, "1722283", {'tag' => 'blog'})
+  </pre>
+
   <fieldset class="cluster">
     <legend>Cluster</legend>
     <fieldset class="keyspace">
       <legend>Keyspace<span class="ksname">&lt;Delicious&gt;</span></legend>
 
       <fieldset class="columnfamily">
-        <legend>ColumnFamily<span class="cfname">&lt;User&gt;</span></legend>
+        <legend>ColumnFamily<span class="cfname">&lt;Users&gt;</span></legend>
 
         <fieldset class="row">
           <legend>Row</legend>
           <fieldset>
-            <legend>Key<span class="key">&lt;mccv&gt;</span></legend>
+            <legend>Key<span class="key">&lt;1272338&gt;</span></legend>
             <table>
               <tr>
                 <td class="column">Name:</td><td class="value">Mark McBride</td>
@@ -43,7 +59,7 @@
             </table>
           </fieldset>
           <fieldset>
-            <legend>Key<span class="key">&lt;asenchi&gt;</span></legend>
+            <legend>Key<span class="key">&lt;1722283&gt;</span></legend>
             <table>
               <tr>
                 <td class="column">Name:</td><td class="value">Curt Micol</td>
@@ -61,7 +77,7 @@
       </fieldset>
 
       <fieldset class="columnfamily">
-        <legend>ColumnFamily<span class="cfname">&lt;Tag&gt;<span></legend>
+        <legend>ColumnFamily<span class="cfname">&lt;Tags&gt;<span></legend>
 
         <fieldset class="row">
           <legend>Row</legend>
@@ -77,15 +93,54 @@
       </fieldset>
 
       <fieldset class="columnfamily">
-        <legend>ColumnFamily<span class="cfname">&lt;Bookmark&gt;</span></legend>
+        <legend>ColumnFamily<span class="cfname">&lt;Bookmarks&gt;</span></legend>
+        <fieldset ="row">
+          <legend>Row</legend>
+          <fieldset>
+            <legend>Key<span class="key">&lt;d273459c664720ee01f2269b65120406&gt;</span></legend>
+            <table>
+              <tr>
+                <td class="column">url:</td><td class="value">http://www.asenchi.com</td>
+              </tr>
+              <tr>
+                <td class="column">description:</td><td class="value">Asenchi blog</td>
+              </tr>
+            </table>
+          </fieldset>
+        </fieldset>
+      </fieldset>
+
+      <fieldset class="columnfamily">
+        <legend>ColumnFamily<span class="cfname">&lt;UserTags&gt;</span></legend>
+        <fieldset ="row">
+          <legend>Row</legend>
+          <fieldset>
+            <legend>Key<span class="key">&lt;1722283&gt;</span></legend>
+            <table>
+              <tr>
+                <td class="column">tag:</td><td class="value">blog</td>
+              </tr>
+            </table>
+          </fieldset>
+        </fieldset>
       </fieldset>
 
       <fieldset class="supercolumnfamily">
-        <legend>SuperColumnFamily<span class="scfname">&lt;Map&gt;</span></legend>
-
+        <legend>SuperColumnFamily<span class="scfname">&lt;UserBookmarks&gt;</span></legend>
+        <fieldset="row">
+          <legend>Row</legend>
+          <fieldset>
+            <legend>Key<span class="key">&lt;1722283&gt;</span></legend>
+            <table>
+              <tr>
+                <td class="column">blog:</td><td class="value">{'d273459c664720ee01f2269b65120406': 'Asenchi Blog'}</td>
+              </tr>
+            </table>
+          </fieldset>
+        </fieldset>
       </fieldset>
-
     </fieldset>
   </fieldset>
+
 </body>
 </html>
