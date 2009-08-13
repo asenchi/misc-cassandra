@@ -90,14 +90,7 @@
             <ColumnFamily CompareWith="UTF8Type" Name="Users" />
             <ColumnFamily CompareWith="UTF8Type" Name="Bookmarks" />
             <ColumnFamily CompareWith="UTF8Type" Name="Tags" />
-            <ColumnFamily CompareWith="UTF8Type" CompareSubcolumnsWith="TimeUUIDType" ColumnType="Super" Name="UserRelationships" />
-
-            <!-- Mimic's Evan Weaver's example for StatusRelationships. This would
-                 keep track of everyone who has that particular bookmark.
-                 API:
-                 https://api.del.icio.us/v1/posts/suggest&url={URL}
-            -->
-            <ColumnFamily CompareWith="UTF8Type" CompareSubcolumnsWith="TimeUUIDType" ColumnType="Super" Name="BookmarkRelationships" />
+            <ColumnFamily CompareWith="UTF8Type" CompareSubcolumnsWith="TimeUUIDType" ColumnType="Super" Name="Map" />
         </Keyspace>
     </Keyspaces>
 
